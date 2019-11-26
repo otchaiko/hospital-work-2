@@ -1,4 +1,4 @@
-public class Worker {
+public class Worker implements IWorker {
 
     private String firstName;
     private String lastName;
@@ -6,6 +6,11 @@ public class Worker {
     private int age;
     private int workExperience;
     private Address address;
+
+    @Override
+    public void work() {
+        System.out.println("Worker " + lastName + " is working ");
+    }
 
     public Worker (String firstName, String lastName, int age, Address address) {
         this.firstName = firstName;

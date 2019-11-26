@@ -1,4 +1,4 @@
-public class Business {
+public abstract class Business implements IBusiness {
 
     private String brandName;
     private double accountMoney;
