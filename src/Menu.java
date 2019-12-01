@@ -15,29 +15,42 @@ public class Menu implements IMenu {
         System.out.println("Come again");
     }
 
+    public final Dish chooseDish(String name) {
+        return chooseDish(name, "hotMeals");
+    }
+
     @Override
-    public Dish chooseDish(String name, String menuSection) {
+    public final Dish chooseDish(String name, String menuSection) {
         Dish result = null;
-        if (menuSection.equals("hotMeals")) {
-            for (Dish dish : hotMeals) {
-                if (dish.getName().equals(name)) {
-                    result = dish;
-                }
+        if (name != null && menuSection != null) {
+            switch (menuSection) {
+                case "hotMeals":
+                    result = findDishByName(hotMeals, name);
+                    break;
+                case "snacks":
+                    result = findDishByName(snacks, name);
+                    break;
+                case "drinks":
+                    result = findDishByName(drinks, name);
+                    break;
+                default:
+                    System.out.println("Sorry this menu section does not exist");
+                    break;
             }
-        } else if (menuSection.equals("snacks")) {
-            for (Dish dish : snacks) {
-                if (dish.getName().equals(name)) {
-                    result = dish;
-                }
+        }
+        return result;
+    }
+
+    private static Dish findDishByName(Dish[] dishes, String name) {
+        Dish result = null;
+        for (Dish dish : dishes) {
+            if (dish == null) {
+                break;
             }
-        } else if (menuSection.equals("drinks")) {
-            for (Dish dish : drinks) {
-                if (dish.getName().equals(name)) {
-                    result = dish;
-                }
+            if (dish.getName().equals(name)) {
+                result = dish;
+                break;
             }
-        } else {
-            System.out.println("Sorry this menu section does not exist");
         }
         return result;
     }
