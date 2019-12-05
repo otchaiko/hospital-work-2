@@ -1,11 +1,12 @@
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 public class Restaurant extends Business {
 
     private Address address;
     private Menu menu;
-    private Worker[] workers;
+    private Set<Worker> workers;
 
     public Restaurant (String brandName, double accountMoney, Address address) {
         super(brandName, accountMoney);
@@ -33,7 +34,7 @@ public class Restaurant extends Business {
     @Override
     public double paySallary() {
         System.out.println("Sallary is paying");
-        return workers.length * 100;
+        return workers.size() * 100;
     }
 
     @Override
@@ -60,11 +61,11 @@ public class Restaurant extends Business {
         this.menu = menu;
     }
 
-    public Worker[] getWorkers() {
+    public Set<Worker> getWorkers() {
         return workers;
     }
 
-    public void setWorkers(Worker[] workers) {
+    public void setWorkers(Set<Worker> workers) {
         this.workers = workers;
     }
 

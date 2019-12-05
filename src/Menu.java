@@ -1,13 +1,14 @@
+import java.util.List;
+import java.util.Map;
+
 public class Menu implements IMenu {
 
-    private Dish[] hotMeals;
-    private Dish[] snacks;
-    private Dish[] drinks;
+    private Map<String, List<Dish>> dishes;
 
     @Override
     public void open() {
-        System.out.println("Our menu has " + hotMeals.length + " hot meals, "
-                + snacks.length + " snacks " + drinks.length + " drinks ");
+        System.out.println("Our menu has " + dishes.get("hotMeals").size() + " hot meals, "
+                + dishes.get("snacks").size() + " snacks " + dishes.get("drinks").size() + " drinks ");
     }
 
     @Override
@@ -23,25 +24,33 @@ public class Menu implements IMenu {
     public final Dish chooseDish(String name, String menuSection) {
         Dish result = null;
         if (name != null && menuSection != null) {
-            switch (menuSection) {
+            List<Dish> dishesList = dishes.get(menuSection);
+            if(dishesList == null) {
+                System.out.println("Sorry this menu section does not exist");
+            } else {
+                result = findDishByName(dishesList, name);
+            }
+
+            //могу ли я убрать switch case?
+            /*switch (menuSection) {
                 case "hotMeals":
-                    result = findDishByName(hotMeals, name);
+                    result = findDishByName(dishes.get("hotMeals"), name);
                     break;
                 case "snacks":
-                    result = findDishByName(snacks, name);
+                    result = findDishByName(dishes.get("snacks"), name);
                     break;
                 case "drinks":
-                    result = findDishByName(drinks, name);
+                    result = findDishByName(dishes.get("drinks"), name);
                     break;
                 default:
                     System.out.println("Sorry this menu section does not exist");
                     break;
-            }
+            } */
         }
         return result;
     }
 
-    private static Dish findDishByName(Dish[] dishes, String name) {
+    private static Dish findDishByName(List<Dish> dishes, String name) {
         Dish result = null;
         for (Dish dish : dishes) {
             if (dish == null) {
@@ -55,28 +64,11 @@ public class Menu implements IMenu {
         return result;
     }
 
-    public Dish[] getHotMeals() {
-        return hotMeals;
+    public Map<String, List<Dish>> getDishes() {
+        return dishes;
     }
 
-    public void setHotMeals(Dish[] hotMeals) {
-        this.hotMeals = hotMeals;
+    public void setDishes(Map<String, List<Dish>> dishes) {
+        this.dishes = dishes;
     }
-
-    public Dish[] getSnacks() {
-        return snacks;
-    }
-
-    public void setSnacks(Dish[] snacks) {
-        this.snacks = snacks;
-    }
-
-    public Dish[] getDrinks() {
-        return drinks;
-    }
-
-    public void setDrinks(Dish[] drinks) {
-        this.drinks = drinks;
-    }
-
 }
