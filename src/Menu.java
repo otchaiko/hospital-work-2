@@ -16,36 +16,23 @@ public class Menu implements IMenu {
         System.out.println("Come again");
     }
 
-    public final Dish chooseDish(String name) {
+    public final Dish chooseDish(String name) throws MenuSectionNotExist, DishNotExist {
         return chooseDish(name, "hotMeals");
     }
 
     @Override
-    public final Dish chooseDish(String name, String menuSection) {
+    public final Dish chooseDish(String name, String menuSection) throws MenuSectionNotExist, DishNotExist {
         Dish result = null;
         if (name != null && menuSection != null) {
             List<Dish> dishesList = dishes.get(menuSection);
             if(dishesList == null) {
-                System.out.println("Sorry this menu section does not exist");
+                throw new MenuSectionNotExist("Sorry this menu section does not exist");
             } else {
                 result = findDishByName(dishesList, name);
+                if(result == null) {
+                    throw new DishNotExist("Sorry this dish does not exist");
+                }
             }
-
-            //могу ли я убрать switch case?
-            /*switch (menuSection) {
-                case "hotMeals":
-                    result = findDishByName(dishes.get("hotMeals"), name);
-                    break;
-                case "snacks":
-                    result = findDishByName(dishes.get("snacks"), name);
-                    break;
-                case "drinks":
-                    result = findDishByName(dishes.get("drinks"), name);
-                    break;
-                default:
-                    System.out.println("Sorry this menu section does not exist");
-                    break;
-            } */
         }
         return result;
     }
