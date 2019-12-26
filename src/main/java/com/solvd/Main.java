@@ -1,4 +1,8 @@
-import java.util.*;
+package com.solvd;
+
+import com.solvd.model.*;
+
+import java.util.Set;
 
 public class Main {
 
@@ -16,7 +20,7 @@ public class Main {
 
         System.out.println("Restaurant " + nobu.getBrandName() + " is created");
 
-        Runner.runChooseDish(nobuMenu, Builder.getClientChoose());
+        Runner.runChooseDish(nobuMenu, Builder.enterDish());
 
     }
 }

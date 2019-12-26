@@ -1,3 +1,7 @@
+package com.solvd.model;
+
+import com.solvd.IWorker;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;

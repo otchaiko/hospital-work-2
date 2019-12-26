@@ -1,10 +1,12 @@
+package com.solvd.model;
+
 import java.util.*;
 
 public class Builder {
     public static Set<Worker> createWorkers() {
 
-        Address alehAddress = new Address("Belarus", "Minsk", "Jukovskogo", "5/2",
-                "23");
+        Address alehAddress = new Address("Belarus", "Minsk", "Jukovskogo", "5",
+                "51");
         Worker aleh = new Worker("Aleh", "Chaiko", 26, alehAddress);
 
         Address maximAddress = new Address("Belarus", "Minsk", "Maximalnaya", "12",
@@ -68,6 +70,42 @@ public class Builder {
         clientChoose.put("hotMeals", hotMeals);
         clientChoose.put("drinks", drinks);
         return clientChoose;
+    }
+
+    public static Map<String, List<String>> enterDish() {
+        Map<String, List<String>> clientChoose = new HashMap<>();
+
+        System.out.println("Please enter hot meals what you want (We can to offer you Borsch and Fried potatoes): ");
+        System.out.println("If you want to go to the next position, enter \"no\"");
+        List<String> hotMeals = addDish();
+
+        System.out.println("Please enter snacks what you want (We can to offer you Olivie and Chiken nuggets): ");
+        System.out.println("If you want to go to the next position, enter \"no\"");
+        List<String> snacks = addDish();
+
+        System.out.println("Please enter drinks what you want (We can to offer you Red Bull and Beer Paulaner): ");
+        System.out.println("If you want to finish your order enter \"no\"");
+        List<String> drinks = addDish();
+
+        clientChoose.put("hotMeals", hotMeals);
+        clientChoose.put("snacks", snacks);
+        clientChoose.put("drinks", drinks);
+
+        return clientChoose;
+    }
+
+    private static List<String> addDish() {
+        Scanner scanner;
+        String answer = null;
+        List<String> result = new ArrayList<>();
+        while(!"no".equals(answer)) {
+            scanner = new Scanner(System.in);
+            answer = scanner.nextLine();
+            if (!"no".equals(answer)) {
+                result.add(answer);
+            }
+        }
+        return result;
     }
 
 }

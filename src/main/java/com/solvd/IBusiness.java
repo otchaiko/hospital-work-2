@@ -1,3 +1,5 @@
+package com.solvd;
+
 import java.util.Date;
 
 public interface IBusiness {

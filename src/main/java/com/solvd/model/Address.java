@@ -1,3 +1,5 @@
+package com.solvd.model;
+
 public class Address {
 
     private String country;

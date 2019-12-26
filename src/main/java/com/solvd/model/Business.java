@@ -1,3 +1,7 @@
+package com.solvd.model;
+
+import com.solvd.IBusiness;
+
 public abstract class Business implements IBusiness {
 
     private String brandName;

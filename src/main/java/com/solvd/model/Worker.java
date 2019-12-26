@@ -1,3 +1,7 @@
+package com.solvd.model;
+
+import com.solvd.IWorker;
+
 public class Worker implements IWorker {
 
     private String firstName;

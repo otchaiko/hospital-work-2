@@ -1,3 +1,8 @@
+package com.solvd.model;
+
+import com.solvd.exception.DishNotExist;
+import com.solvd.exception.MenuSectionNotExist;
+
 import java.util.List;
 import java.util.Map;
 
