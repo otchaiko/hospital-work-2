@@ -1,8 +1,11 @@
 package com.solvd.model;
 
 import com.solvd.IWorker;
+import org.apache.log4j.Logger;
 
 public class Worker implements IWorker {
+
+    private static final Logger LOGGER = Logger.getLogger(Worker.class);
 
     private String firstName;
     private String lastName;
@@ -13,7 +16,7 @@ public class Worker implements IWorker {
 
     @Override
     public void work() {
-        System.out.println("Worker " + lastName + " is working ");
+        LOGGER.info("Worker " + lastName + " is working ");
     }
 
     public Worker (String firstName, String lastName, int age, Address address) {

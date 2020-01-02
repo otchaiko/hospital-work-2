@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workers>
+    <worker>
+        <firstName>Aleh</firstName>
+        <lastName>Chaiko</lastName>
+        <age>26</age>
+        <address>
+            <country>Belarus</country>
+            <city>Minsk</city>
+            <streetName>Jukovskogo</streetName>
+            <houseNumber>5</houseNumber>
+            <apartment>51</apartment>
+        </address>
+    </worker>
+    <worker>
+        <firstName>Maxim</firstName>
+        <lastName>Maximenko</lastName>
+        <age>18</age>
+        <address>
+            <country>Belarus</country>
+            <city>Minsk</city>
+            <streetName>Maximalnaya</streetName>
+            <houseNumber>12</houseNumber>
+            <apartment>225b</apartment>
+        </address>
+    </worker>
+</workers>

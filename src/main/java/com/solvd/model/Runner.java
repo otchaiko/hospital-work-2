@@ -2,11 +2,15 @@ package com.solvd.model;
 
 import com.solvd.exception.DishNotExist;
 import com.solvd.exception.MenuSectionNotExist;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
 
 public class Runner {
+
+    private static final Logger LOGGER = Logger.getLogger(Runner.class);
+
     public static void runChooseDish(Menu nobuMenu, Map<String, List<String>> dishNames) {
         double totalPrice = 0.0;
         try {
@@ -14,15 +18,15 @@ public class Runner {
                 for(String dishName : entry.getValue()) {
                     Dish currentDish = nobuMenu.chooseDish(dishName, entry.getKey());
                     totalPrice = totalPrice + currentDish.getPrice();
-                    System.out.println("Current dish price is " + currentDish.getPrice());
+                    LOGGER.debug("Current dish price is " + currentDish.getPrice());
                 }
             }
         } catch (MenuSectionNotExist e) {
-            System.out.println("Cannot find menu section with this name");
+            LOGGER.error("Cannot find menu section with this name");
         } catch (DishNotExist e) {
-            System.out.println("Cannot find dish with this name");
+            LOGGER.error("Cannot find dish with this name");
         } finally {
-            System.out.println("Total price is : " + totalPrice);
+            LOGGER.info("Total price is : " + totalPrice);
         }
     }
 }

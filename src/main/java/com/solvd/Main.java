@@ -1,10 +1,13 @@
 package com.solvd;
 
 import com.solvd.model.*;
+import org.apache.log4j.Logger;
 
 import java.util.Set;
 
 public class Main {
+
+    private static final Logger LOGGER = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
 
@@ -18,7 +21,7 @@ public class Main {
         nobu.setMenu(nobuMenu);
         nobu.setAccounting(true);
 
-        System.out.println("Restaurant " + nobu.getBrandName() + " is created");
+        LOGGER.info("Restaurant " + nobu.getBrandName() + " is created");
 
         Runner.runChooseDish(nobuMenu, Builder.enterDish());
 

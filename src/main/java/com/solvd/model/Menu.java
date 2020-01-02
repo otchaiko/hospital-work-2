@@ -3,23 +3,26 @@ package com.solvd.model;
 import com.solvd.exception.DishNotExist;
 import com.solvd.IMenu;
 import com.solvd.exception.MenuSectionNotExist;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
 
 public class Menu implements IMenu {
 
+    private static final Logger LOGGER = Logger.getLogger(Menu.class);
+
     private Map<String, List<Dish>> dishes;
 
     @Override
     public void open() {
-        System.out.println("Our menu has " + dishes.get("hotMeals").size() + " hot meals, "
+        LOGGER.info("Our menu has " + dishes.get("hotMeals").size() + " hot meals, "
                 + dishes.get("snacks").size() + " snacks " + dishes.get("drinks").size() + " drinks ");
     }
 
     @Override
     public void close() {
-        System.out.println("Come again");
+        LOGGER.info("Come again");
     }
 
     public final Dish chooseDish(String name) throws MenuSectionNotExist, DishNotExist {

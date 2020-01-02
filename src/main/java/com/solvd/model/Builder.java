@@ -1,17 +1,38 @@
 package com.solvd.model;
 
+import com.solvd.utils.PartialProperty;
+import org.apache.log4j.Logger;
+
 import java.util.*;
 
 public class Builder {
+
+    private static final Logger LOGGER = Logger.getLogger(Builder.class);
+
     public static Set<Worker> createWorkers() {
 
-        Address alehAddress = new Address("Belarus", "Minsk", "Jukovskogo", "5",
-                "51");
-        Worker aleh = new Worker("Aleh", "Chaiko", 26, alehAddress);
+        Address alehAddress = new Address(
+                PartialProperty.readProperty("aleh.address.country"),
+                PartialProperty.readProperty("aleh.address.city"),
+                PartialProperty.readProperty("aleh.address.street"),
+                PartialProperty.readProperty("aleh.address.house"),
+                PartialProperty.readProperty("aleh.address.apartment"));
+        Worker aleh = new Worker(
+                PartialProperty.readProperty("aleh.firstName"),
+                PartialProperty.readProperty("aleh.lastName"),
+                Integer.parseInt(PartialProperty.readProperty("aleh.age")),
+                alehAddress);
 
-        Address maximAddress = new Address("Belarus", "Minsk", "Maximalnaya", "12",
-                "225b");
-        Worker maxim = new Worker("Maxim", "Maximenko", 18, maximAddress);
+        Address maximAddress = new Address(
+                PartialProperty.readProperty("maxim.address.country"),
+                PartialProperty.readProperty("maxim.address.city"),
+                PartialProperty.readProperty("maxim.address.street"),
+                PartialProperty.readProperty("maxim.address.house"),
+                PartialProperty.readProperty("maxim.address.apartment"));
+        Worker maxim = new Worker(PartialProperty.readProperty("maxim.firstName"),
+                PartialProperty.readProperty("maxim.lastName"),
+                Integer.parseInt(PartialProperty.readProperty("maxim.age")),
+                maximAddress);
 
         Set<Worker> collective = new HashSet<>();
         collective.add(aleh);
@@ -21,20 +42,38 @@ public class Builder {
     }
 
     public static Menu createMenu() {
-        Dish beerPaulaner = new Dish("Beer Paulaner", 500, 5);
-        Dish redBull = new Dish("Red Bull", 350, 4.30);
+        Dish beerPaulaner = new Dish(
+                PartialProperty.readProperty("dish.drink.beerPaulaner.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.drink.beerPaulaner.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.drink.beerPaulaner.price")));
+        Dish redBull = new Dish(
+                PartialProperty.readProperty("dish.drink.redBull.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.drink.redBull.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.drink.redBull.price")));
         List<Dish> drinks = new ArrayList<>();
         drinks.add(beerPaulaner);
         drinks.add(redBull);
 
-        Dish soup = new Dish("Borsch", 500, 6.80);
-        Dish potato = new Dish("Fried potatoes", 650, 6.20);
+        Dish soup = new Dish(
+                PartialProperty.readProperty("dish.hotMeal.borsch.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.hotMeal.borsch.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.hotMeal.borsch.price")));
+        Dish potato = new Dish(
+                PartialProperty.readProperty("dish.hotMeal.potato.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.hotMeal.potato.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.hotMeal.potato.price")));
         List<Dish> hotMeals = new ArrayList<>();
         hotMeals.add(soup);
         hotMeals.add(potato);
 
-        Dish salad = new Dish("Olivie", 450, 4.80);
-        Dish nuggets = new Dish("Chiken nuggets", 200, 8);
+        Dish salad = new Dish(
+                PartialProperty.readProperty("dish.snack.olivie.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.snack.olivie.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.snack.olivie.price")));
+        Dish nuggets = new Dish(
+                PartialProperty.readProperty("dish.snack.nuggets.name"),
+                Double.parseDouble(PartialProperty.readProperty("dish.snack.nuggets.weight")),
+                Double.parseDouble(PartialProperty.readProperty("dish.snack.nuggets.price")));
         List<Dish> snacks = new ArrayList<>();
         snacks.add(salad);
         snacks.add(nuggets);
@@ -52,9 +91,15 @@ public class Builder {
 
     public static Restaurant createRestaurant() {
 
-        Address nobuAddress = new Address("Belarus", "Minsk", "Mogilevskaya", "39a");
+        Address nobuAddress = new Address(
+                PartialProperty.readProperty("restaurant.nobu.address.country"),
+                PartialProperty.readProperty("restaurant.nobu.address.city"),
+                PartialProperty.readProperty("restaurant.nobu.address.street"),
+                PartialProperty.readProperty("restaurant.nobu.address.house"));
 
-        Restaurant nobu = new Restaurant("Nobu", 10000.00, nobuAddress);
+        Restaurant nobu = new Restaurant(
+                PartialProperty.readProperty("restaurant.name"),
+                Double.parseDouble(PartialProperty.readProperty("restaurant.accountMoney")), nobuAddress);
 
         return nobu;
     }
@@ -75,7 +120,7 @@ public class Builder {
     public static Map<String, List<String>> enterDish() {
         Map<String, List<String>> clientChoose = new HashMap<>();
 
-        System.out.println("Please enter hot meals what you want (We can to offer you Borsch and Fried potatoes): ");
+        System.out.println("\nPlease enter hot meals what you want (We can to offer you Borsch and Fried potatoes): ");
         System.out.println("If you want to go to the next position, enter \"no\"");
         List<String> hotMeals = addDish();
 

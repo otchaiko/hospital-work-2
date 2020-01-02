@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<menu>
+    <dishes name="hotMeals">
+        <dish>
+            <name>borsch</name>
+            <weight>500</weight>
+            <price>6.80</price>
+        </dish>
+        <dish>
+            <name>fried potatoes</name>
+            <weight>650</weight>
+            <price>6.20</price>
+        </dish>
+    </dishes>
+    <dishes name="snacks">
+        <dish>
+            <name>olivie</name>
+            <weight>450</weight>
+            <price>4.80</price>
+        </dish>
+        <dish>
+            <name>chiken nuggets</name>
+            <weight>200</weight>
+            <price>8</price>
+        </dish>
+    </dishes>
+    <dishes name="drinks">
+        <dish>
+            <name>beer paulaner</name>
+            <weight>500</weight>
+            <price>5</price>
+        </dish>
+        <dish>
+            <name>red bull</name>
+            <weight>350</weight>
+            <price>4.30</price>
+        </dish>
+    </dishes>
+</menu>
