@@ -1,5 +1,8 @@
 package com.solvd;
 
+import com.solvd.mapper.AddressMapper;
+import com.solvd.mapper.RestaurantMapper;
+import com.solvd.mapper.SqlExecutor;
 import com.solvd.model.*;
 import org.apache.log4j.Logger;
 
@@ -10,6 +13,9 @@ public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        RestaurantMapper restaurantMapper = SqlExecutor.getRestaurantMapper();
+        Restaurant restaurant = restaurantMapper.getRestaurantById(1L);
 
         Set<Worker> collective = Builder.createWorkers();
 

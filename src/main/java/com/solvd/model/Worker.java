@@ -14,9 +14,7 @@ public class Worker implements IWorker {
     private int workExperience;
     private Address address;
 
-    @Override
-    public void work() {
-        LOGGER.info("Worker " + lastName + " is working ");
+    public Worker() {
     }
 
     public Worker (String firstName, String lastName, int age, Address address) {
@@ -34,6 +32,10 @@ public class Worker implements IWorker {
         this.address = address;
     }
 
+    @Override
+    public void work() {
+        LOGGER.info("Worker " + lastName + " is working ");
+    }
 
     public String getFirstName() {
         return firstName;

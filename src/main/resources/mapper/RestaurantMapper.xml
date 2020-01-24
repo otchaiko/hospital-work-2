@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.mapper.RestaurantMapper">
+    <select id="getRestaurantById" resultMap="restaurantMap">
+        SELECT
+
+            r.brand_name, r.account_money, r.accounting,
+            m.section_name,
+            d.name, d.weight, d.price,
+            w.first_name, w.last_name, w.position, w.age, w.experience,
+            wa.country as "worker_country", wa.city as "worker_city", wa.street as "worker_street", wa.house as "worker_house", wa.apartment as "worker_apartment",
+            a.country as "restaurant_country", a.city as "restaurant_city", a.street as "restaurant_street", a.house as "restaurant_house", a.apartment as "restaurant_apartment"
+
+        FROM restaurants r
+                 INNER JOIN menus m ON m.restaurant_id = r.id
+                 INNER JOIN dishes d on m.dish_id = d.id
+                 INNER JOIN restaurant_workers rw on r.id = rw.restaurant_id
+                 INNER JOIN workers w on rw.worker_id = w.id
+                 INNER JOIN addresses a on r.address_id = a.id
+                 INNER JOIN addresses wa on wa.id = w.address_id;
+    </select>
+
+    <resultMap id="restaurantMap" type="com.solvd.model.Restaurant">
+        <result column="brand_name" property="brandName"/>
+        <result column="account_money" property="accountMoney"/>
+        <result column="accounting" property="accounting" javaType="java.lang.Boolean"/>
+        <association property="address" resultMap="com.solvd.mapper.AddressMapper.addressMap" javaType="com.solvd.model.Address" columnPrefix="restaurant_"/>
+        <!--<association property="menu" resultMap="com.solvd.mapper.MenuMapper.menuMap" javaType="com.solvd.model.Menu"/>-->
+        <collection property="workers" javaType="java.util.Set" resultMap="com.solvd.mapper.WorkerMapper.workerMap"/>
+    </resultMap>
+
+</mapper>

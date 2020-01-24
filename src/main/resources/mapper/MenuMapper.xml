@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.mapper.MenuMapper">
+
+    <resultMap id="menuMap" type="com.solvd.model.Menu">
+        <collection property="dishes" resultMap="dishesMenuMap"/>
+    </resultMap>
+
+    <resultMap id="dishesMenuMap" type="java.util.Map">
+        <collection property="section_name" resultMap="com.solvd.mapper.DishMapper.dishMap"/>
+    </resultMap>
+
+</mapper>

@@ -2,9 +2,12 @@ package com.solvd.model;
 
 public class Dish {
 
-    private final String name;
-    private final double weight;
-    private final double price;
+    private String name;
+    private double weight;
+    private double price;
+
+    public Dish() {
+    }
 
     public Dish (String name, double weight, double price) {
         this.name = name;

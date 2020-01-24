@@ -15,6 +15,9 @@ public class Restaurant extends Business {
     private Menu menu;
     private Set<Worker> workers;
 
+    public Restaurant() {
+    }
+
     public Restaurant (String brandName, double accountMoney, Address address) {
         super(brandName, accountMoney);
         this.address = address;

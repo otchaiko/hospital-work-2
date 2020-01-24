@@ -1,0 +1,13 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.mapper.WorkerMapper">
+
+    <resultMap id="workerMap" type="com.solvd.model.Worker">
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="position" property="position"/>
+        <result column="age" property="age"/>
+        <result column="experience" property="workExperience"/>
+        <association property="address" resultMap="com.solvd.mapper.AddressMapper.addressMap" javaType="com.solvd.model.Address" columnPrefix="worker_"/>
+    </resultMap>
+
+</mapper>

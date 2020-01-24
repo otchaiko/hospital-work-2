@@ -8,6 +8,9 @@ public abstract class Business implements IBusiness {
     private double accountMoney;
     private boolean accounting;
 
+    public Business() {
+    }
+
     public Business(String brandName, double accountMoney) {
         this.brandName = brandName;
         this.accountMoney = accountMoney;
