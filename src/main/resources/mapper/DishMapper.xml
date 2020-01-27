@@ -2,6 +2,7 @@
 <mapper namespace="com.solvd.mapper.DishMapper">
 
     <resultMap id="dishMap" type="com.solvd.model.Dish">
+        <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="weight" property="weight"/>
         <result column="price" property="price"/>

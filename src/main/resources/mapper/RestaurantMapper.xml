@@ -3,12 +3,12 @@
     <select id="getRestaurantById" resultMap="restaurantMap">
         SELECT
 
-            r.brand_name, r.account_money, r.accounting,
+            r.id, r.brand_name, r.account_money, r.accounting,
             m.section_name,
-            d.name, d.weight, d.price,
-            w.first_name, w.last_name, w.position, w.age, w.experience,
-            wa.country as "worker_country", wa.city as "worker_city", wa.street as "worker_street", wa.house as "worker_house", wa.apartment as "worker_apartment",
-            a.country as "restaurant_country", a.city as "restaurant_city", a.street as "restaurant_street", a.house as "restaurant_house", a.apartment as "restaurant_apartment"
+            d.id, d.name, d.weight, d.price,
+            w.id, w.first_name, w.last_name, w.position, w.age, w.experience,
+            wa.id, wa.country as "worker_country", wa.city as "worker_city", wa.street as "worker_street", wa.house as "worker_house", wa.apartment as "worker_apartment",
+            a.id, a.country as "restaurant_country", a.city as "restaurant_city", a.street as "restaurant_street", a.house as "restaurant_house", a.apartment as "restaurant_apartment"
 
         FROM restaurants r
                  INNER JOIN menus m ON m.restaurant_id = r.id
@@ -20,6 +20,7 @@
     </select>
 
     <resultMap id="restaurantMap" type="com.solvd.model.Restaurant">
+        <id column="id" property="id"/>
         <result column="brand_name" property="brandName"/>
         <result column="account_money" property="accountMoney"/>
         <result column="accounting" property="accounting" javaType="java.lang.Boolean"/>

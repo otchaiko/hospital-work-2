@@ -1,0 +1,16 @@
+{
+  "id" : 1,
+  "firstName" : "Aleh",
+  "lastName" : "Chaiko",
+  "position" :"manager",
+  "age" : 26,
+  "workExperience" : 5,
+  "address" : {
+    "id" : 2,
+    "country" : "Belarus",
+    "city" : "Minsk",
+    "streetName" :  "Jukovskogo",
+    "houseNumber" : "5/1",
+    "apartment" : "51"
+  }
+}

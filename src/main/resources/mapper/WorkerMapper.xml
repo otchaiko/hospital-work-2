@@ -2,6 +2,7 @@
 <mapper namespace="com.solvd.mapper.WorkerMapper">
 
     <resultMap id="workerMap" type="com.solvd.model.Worker">
+        <id column="id" property="id"/>
         <result column="first_name" property="firstName"/>
         <result column="last_name" property="lastName"/>
         <result column="position" property="position"/>

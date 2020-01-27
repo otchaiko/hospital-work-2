@@ -15,13 +15,13 @@ public class Main {
     public static void main(String[] args) {
 
         RestaurantMapper restaurantMapper = SqlExecutor.getRestaurantMapper();
-        Restaurant restaurant = restaurantMapper.getRestaurantById(1L);
+        Restaurant nobu = restaurantMapper.getRestaurantById(1L);
 
         Set<Worker> collective = Builder.createWorkers();
 
         Menu nobuMenu = Builder.createMenu();
 
-        Restaurant nobu = Builder.createRestaurant();
+        //Restaurant nobu = Builder.createRestaurant();
 
         nobu.setWorkers(collective);
         nobu.setMenu(nobuMenu);

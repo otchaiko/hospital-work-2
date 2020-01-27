@@ -2,6 +2,7 @@ package com.solvd.model;
 
 public class Address {
 
+    private int id;
     private String country;
     private String city;
     private String streetName;
@@ -24,6 +25,14 @@ public class Address {
         this.streetName = streetName;
         this.houseNumber = houseNumber;
         this.apartment = apartment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCountry() {

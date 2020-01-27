@@ -7,6 +7,7 @@ public class Worker implements IWorker {
 
     private static final Logger LOGGER = Logger.getLogger(Worker.class);
 
+    private int id;
     private String firstName;
     private String lastName;
     private String position;
@@ -85,5 +86,11 @@ public class Worker implements IWorker {
         this.address = address;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

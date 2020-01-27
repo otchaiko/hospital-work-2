@@ -11,6 +11,7 @@ public class Restaurant extends Business {
 
     private static final Logger LOGGER = Logger.getLogger(Restaurant.class);
 
+    private int id;
     private Address address;
     private Menu menu;
     private Set<Worker> workers;
@@ -53,6 +54,14 @@ public class Restaurant extends Business {
         for (IWorker worker : workers) {
             worker.work();
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Address getAddress() {
