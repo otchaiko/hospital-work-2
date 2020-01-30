@@ -1,5 +1,6 @@
 package com.solvd;
 
+import com.solvd.json.AddressWriter;
 import com.solvd.mapper.AddressMapper;
 import com.solvd.mapper.RestaurantMapper;
 import com.solvd.mapper.SqlExecutor;
@@ -13,6 +14,11 @@ public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        AddressWriter addressWriter = new AddressWriter();
+        addressWriter.readToFileById("src/main/resources/test.json", 1L);
+
+        addressWriter.writeToDb("src/main/resources/json/address.json");
 
         RestaurantMapper restaurantMapper = SqlExecutor.getRestaurantMapper();
         Restaurant nobu = restaurantMapper.getRestaurantById(1L);

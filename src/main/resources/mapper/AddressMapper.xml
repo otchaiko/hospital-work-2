@@ -1,5 +1,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solvd.mapper.AddressMapper">
+
+    <insert id="create" useGeneratedKeys="false">
+        INSERT INTO addresses (country, city, street, house, apartment) VALUES (#{country}, #{city}, #{streetName}, #{houseNumber}, #{apartment});
+    </insert>
+
     <select id="getAddressById" resultMap="addressMap">
         SELECT id, country, city, street, house, apartment FROM addresses WHERE id = #{id}
     </select>

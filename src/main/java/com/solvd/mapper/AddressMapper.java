@@ -6,4 +6,6 @@ public interface AddressMapper {
 
     Address getAddressById(Long id);
 
+    void create(Address address);
+
 }
